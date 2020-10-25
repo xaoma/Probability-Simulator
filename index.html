@@ -1,44 +1,114 @@
 <script>
-  var itemcount = 0;
+  var casecount = 0;
+  var milspeccount = 0;
+  var restrictedcount = 0;
+  var classifiedcount = 0;
+  var covertcount = 0;
+  var knifecount = 0;
+  var rarityValue = {
+    milspec: 0.75,
+    restricted: 0.92,
+    classified: 0.97,
+    covert: 0.995,
+  };
 </script>
 <html>
 <head><title>CaseOpeningV1</title></head>
 <body>
+    <style>
+        body {
+            background-image: url('images/background.jpg');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            display: block;
+            margin-left: 40%;
+            margin-right: auto;
+            width: 70%;
+            color: white
+        }
+        
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 15%;
+        }
+        
+         h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            display: block;
+            margin-left: 40%;
+            margin-right: auto;
+            width: 70%;
+            color: white    
+        }
+    </style>
     
-    <a href=# onclick="add()"><img src="images/Bravo.png"></a>
+    <a href=# onclick="add()"><img src="images/Bravo.png" class="center"></a>
     <br><br>
-    In
-    <input type="text" id ="unboxedtextrestricted" disabled style= text-align:center>
-    Cases...
-    <br><br>
-    You've Opened:
+    <h1><b>In</b>
+    <input type="text" id ="unboxedtextcases" disabled style= text-align:center>
+    <b>Cases...</b><h1>
+        
+    <br><br>   
+    <h2>You've Opened:
     <input type="text" id ="unboxedtextmilspec" disabled style= text-align:center>
     <script>
       function add() {
           setTimeout(function(){
-                    itemcount = itemcount + 1
-                    document.getElementById('unboxedtextmilspec').value = itemcount;
-                    document.title = itemcount + " Cases";  
-            },500);
+                var randNum = Math.random().toFixed(3);
+                if (randNum <= rarityValue.milspec) {
+                    rarity = "milspec";
+                    milspeccount = milspeccount + 1
+                    } else if (randNum >= rarityValue.milspec && randNum <= rarityValue.restricted) {
+                        rarity = "restricted";
+                        restrictedcount = restrictedcount + 1
+                        } else if (randNum >= rarityValue.restricted && randNum <= rarityValue.classified) {
+                            rarity = "classified";
+                            classifiedcount = classifiedcount + 1
+                                } else if (randNum >= rarityValue.classified && randNum <= rarityValue.covert) {
+                                     rarity = "covert";
+                                     covertcount = covertcount + 1
+                                         } else {
+                                            rarity = "knife";
+                                            knifecount = knifecount + 1
+                                         }
+              document.getElementById('unboxedtextmilspec').value = milspeccount;
+              document.getElementById('unboxedtextrestricted').value = restrictedcount;
+              document.getElementById('unboxedtextclassified').value = classifiedcount;
+              document.getElementById('unboxedtextcovert').value = covertcount;
+              document.getElementById('unboxedtextknives').value = knifecount;
+              casecount = casecount + 1
+              document.getElementById('unboxedtextcases').value = casecount;
+              
+              }
+          )
       }
+
     </script>
-    Milspecs
+    <b>Milspecs</b>
     <br><br>
-    You've Opened:
+    <b>You've Opened:</b>
     <input type="text" id ="unboxedtextrestricted" disabled style= text-align:center>
-    Restricteds
+    <b>Restricteds</b>
     <br><br>
-    You've Opened:
+    <b>You've Opened:</b>
     <input type="text" id ="unboxedtextclassified" disabled style= text-align:center>
-    Classifieds
+    <b>Classifieds</b>
     <br><br>
-    You've Opened:
+    <b>You've Opened:</b>
     <input type="text" id ="unboxedtextcovert" disabled style= text-align:center>
-    Coverts
+    <b>Coverts</b>
     <br><br>
-    You've Opened:
+    <b>You've Opened:</b>
     <input type="text" id ="unboxedtextknives" disabled style= text-align:center>
-    Knives
+    <b>Knives</b>
     <br><br>
     
     
@@ -56,5 +126,7 @@
         document.title = itemcount + " Cases";
     }
     </script>
+        
+    <h1> Saving Coming Soon!! </h1>
 </body>
 </html>
