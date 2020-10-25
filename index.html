@@ -11,6 +11,7 @@
     classified: 0.97,
     covert: 0.995,
   };
+  var moneyspent = 0.00;
 </script>
 <html>
 <head><title>CaseOpeningV1</title></head>
@@ -55,6 +56,8 @@
     <h1><b>In</b>
     <input type="text" id ="unboxedtextcases" disabled style= text-align:center>
     <b>Cases...</b><h1>
+    <b>You've Paid: </b>
+    <input type="text" id ="amountpaid" disabled style= text-align:center>
         
     <br><br>   
     <h2>You've Opened:
@@ -86,7 +89,8 @@
               document.getElementById('unboxedtextknives').value = knifecount;
               casecount = casecount + 1
               document.getElementById('unboxedtextcases').value = casecount;
-              
+              moneyspent = moneyspent + 33.50
+              document.getElementById('amountpaid').value = moneyspent;
               }
           )
       }
